@@ -8,6 +8,8 @@ enum {
     SERVO_MIN_PULSE_US = 1000,
     SERVO_NEUTRAL_PULSE_US = 1500,
     SERVO_MAX_PULSE_US = 2000,
+    SERVO_FRAME_US = 20000,
+    SERVO_SLOT_US = 4000,
 };
 
 typedef enum {
@@ -21,6 +23,11 @@ typedef struct {
     uint8_t gpio_pin;
     uint8_t mcu_package_pin;
 } ServoPinMap;
+
+static inline uint16_t servo_channel_offset_us(uint32_t index)
+{
+    return (uint16_t)(index * SERVO_SLOT_US);
+}
 
 /* Extracted from ../test/STM.kicad_sch, U3 = STM32F103C8Tx LQFP-48. */
 static const ServoPinMap SERVO_PIN_MAP[SERVO_COUNT] = {

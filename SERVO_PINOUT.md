@@ -29,9 +29,24 @@ Mỗi đầu nối J4/J7/J9/J12/J13:
 
 ## Firmware kiểm tra
 
-Firmware dùng TIM2 để phát khung 50 Hz. Từng servo được kiểm tra lần lượt
-bằng xung 1.0–2.0 ms, bước 0.25 ms; bốn servo còn lại giữ ở 1.5 ms. Sau khi
-kiểm tra xong, cả năm kênh ở vị trí giữa.
+Firmware dùng TIM2 để phát khung 50 Hz; cạnh lên của các kênh lệch nhau 4 ms.
+Góc 0–180° được ánh xạ tuyến tính sang xung 1.0–2.0 ms. Lệnh `TEST` quét
+từng servo một, bước 0.25 ms; bốn servo còn lại giữ ở giữa. Sau kiểm tra, cả
+năm kênh trở về 90°.
+
+## Cổng UART hiện dùng
+
+Firmware nhận lệnh ở **J5 / UART_1**, USART1, 9600 8N1:
+
+| Chân J5 | Net trên schematic | Nối với USB-UART |
+|---:|---|---|
+| 1 | 5V | Để hở |
+| 2 | PA10 / USART1_RX | TX của adapter |
+| 3 | PA9 / USART1_TX | RX của adapter |
+| 4 | Earth | GND của adapter |
+
+J8 là `UART_3` (PB11/RX, PB10/TX), hiện firmware không dùng. J3 là cổng
+ST-Link SWD (PA13/SWDIO, PA14/SWCLK), không phải cổng UART.
 
 Số chân đầu nối trong tài liệu theo netlist KiCad; khi cắm, đối chiếu ký hiệu
 pin trên footprint và chiều khóa của giắc. Không cấp nguồn servo từ chân

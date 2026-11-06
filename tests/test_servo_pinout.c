@@ -23,6 +23,14 @@ int main(void)
                     (unsigned long)(index + 1u));
             return 1;
         }
+
+        if ((servo_channel_offset_us(index) != (index * SERVO_SLOT_US)) ||
+            ((servo_channel_offset_us(index) + SERVO_MAX_PULSE_US) >=
+             SERVO_FRAME_US)) {
+            fprintf(stderr, "Servo frame slot invalid at channel %lu\n",
+                    (unsigned long)(index + 1u));
+            return 1;
+        }
     }
 
     if ((servo_clamp_pulse(0u) != SERVO_MIN_PULSE_US) ||

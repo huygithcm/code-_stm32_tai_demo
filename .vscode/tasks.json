@@ -15,7 +15,7 @@
       "command": "cmake",
       "args": ["--build", "--preset", "stm32f103c8-debug"],
       "options": {"cwd": "${workspaceFolder}"},
-      "dependsOn": "Configure STM32F103C8 sample",
+      "dependsOn": "Configure STM32F103C8 servo test",
       "dependsOrder": "sequence",
       "group": {"kind": "build", "isDefault": true},
       "problemMatcher": "$gcc"
@@ -26,7 +26,7 @@
       "command": "st-flash",
       "args": ["--reset", "write", "build/stm32f103c8_servo_test.bin", "0x08000000"],
       "options": {"cwd": "${workspaceFolder}"},
-      "dependsOn": "Build STM32F103C8 sample",
+      "dependsOn": "Build STM32F103C8 servo test",
       "dependsOrder": "sequence",
       "problemMatcher": []
     }

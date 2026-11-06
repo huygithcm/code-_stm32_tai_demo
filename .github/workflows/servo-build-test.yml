@@ -26,6 +26,13 @@ jobs:
             tests/test_servo_pinout.c -o /tmp/test_servo_pinout
           /tmp/test_servo_pinout
 
+      - name: Test UART commands and angles
+        run: |
+          cc -std=c11 -Wall -Wextra -Werror -Isrc \
+            src/servo_command.c tests/test_servo_commands.c \
+            -o /tmp/test_servo_commands
+          /tmp/test_servo_commands
+
       - name: Configure firmware
         run: cmake --preset stm32f103c8-debug
 

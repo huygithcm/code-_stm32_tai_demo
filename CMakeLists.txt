@@ -5,6 +5,7 @@ project(stm32f103c8_servo_test LANGUAGES C ASM)
 add_executable(stm32f103c8_servo_test
     src/startup.S
     src/main.c
+    src/servo_command.c
 )
 
 set_target_properties(stm32f103c8_servo_test PROPERTIES
