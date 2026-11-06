@@ -35,6 +35,12 @@ Commands are case-insensitive. `S1` through `S5` accept integer angles from 0
 to 180. `TEST` takes about 28 seconds; wait for its completion response before
 sending another command.
 
+## ESP32 local Wi-Fi controller
+
+An ESP32 SoftAP web server for controlling the five STM32 servos is in
+[`esp32/`](esp32/README.md). It provides an access point and forwards individual
+angle commands over UART_1, so the client device does not need internet access.
+
 ## Build and tests
 
 Install CMake and an `arm-none-eabi` GCC toolchain, then run:
