@@ -1,0 +1,34 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Configure STM32F103C8 sample",
+      "type": "process",
+      "command": "cmake",
+      "args": ["--preset", "stm32f103c8-debug"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
+      "label": "Build STM32F103C8 sample",
+      "type": "process",
+      "command": "cmake",
+      "args": ["--build", "--preset", "stm32f103c8-debug"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "dependsOn": "Configure STM32F103C8 sample",
+      "dependsOrder": "sequence",
+      "group": {"kind": "build", "isDefault": true},
+      "problemMatcher": "$gcc"
+    },
+    {
+      "label": "Flash STM32F103C8 sample via ST-Link",
+      "type": "process",
+      "command": "st-flash",
+      "args": ["--reset", "write", "build/stm32f103c8_sample.bin", "0x08000000"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "dependsOn": "Build STM32F103C8 sample",
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    }
+  ]
+}
