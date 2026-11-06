@@ -1,2 +1,3 @@
 /build/
 /current_flash_backup.bin
+/esp32/.pio/
