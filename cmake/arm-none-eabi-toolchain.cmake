@@ -8,6 +8,11 @@ else()
 endif()
 
 set(_STM32_BIN "${STM32_GNU_TOOLS_ROOT}/bin")
+if(NOT EXISTS "${_STM32_BIN}/arm-none-eabi-gcc")
+    find_program(_STM32_ARM_GCC arm-none-eabi-gcc REQUIRED)
+    get_filename_component(_STM32_BIN "${_STM32_ARM_GCC}" DIRECTORY)
+endif()
+
 set(CMAKE_C_COMPILER "${_STM32_BIN}/arm-none-eabi-gcc")
 set(CMAKE_ASM_COMPILER "${_STM32_BIN}/arm-none-eabi-gcc")
 set(CMAKE_OBJCOPY "${_STM32_BIN}/arm-none-eabi-objcopy")

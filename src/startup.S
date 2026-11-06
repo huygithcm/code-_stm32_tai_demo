@@ -22,6 +22,11 @@ g_pfnVectors:
     .word 0
     .word Default_Handler
     .word Default_Handler
+/* IRQs 0..27 precede TIM2 (IRQ 28) in the STM32F103 vector table. */
+.rept 28
+    .word Default_Handler
+.endr
+    .word TIM2_IRQHandler
 .size g_pfnVectors, .-g_pfnVectors
 
 .section .text.Reset_Handler,"ax",%progbits

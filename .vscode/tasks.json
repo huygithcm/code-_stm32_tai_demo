@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Configure STM32F103C8 sample",
+      "label": "Configure STM32F103C8 servo test",
       "type": "process",
       "command": "cmake",
       "args": ["--preset", "stm32f103c8-debug"],
@@ -10,7 +10,7 @@
       "problemMatcher": []
     },
     {
-      "label": "Build STM32F103C8 sample",
+      "label": "Build STM32F103C8 servo test",
       "type": "process",
       "command": "cmake",
       "args": ["--build", "--preset", "stm32f103c8-debug"],
@@ -21,10 +21,10 @@
       "problemMatcher": "$gcc"
     },
     {
-      "label": "Flash STM32F103C8 sample via ST-Link",
+      "label": "Flash STM32F103C8 servo test via ST-Link",
       "type": "process",
       "command": "st-flash",
-      "args": ["--reset", "write", "build/stm32f103c8_sample.bin", "0x08000000"],
+      "args": ["--reset", "write", "build/stm32f103c8_servo_test.bin", "0x08000000"],
       "options": {"cwd": "${workspaceFolder}"},
       "dependsOn": "Build STM32F103C8 sample",
       "dependsOrder": "sequence",
